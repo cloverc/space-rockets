@@ -93,7 +93,7 @@ function Header({ launchPad }) {
         {launchPad.site_name_long}
         <Flex>
           <FavouriteButton
-            type={"LaunchPad"}
+            type={"launchPad"}
             id={launchPad.site_id}
           />
         </Flex>

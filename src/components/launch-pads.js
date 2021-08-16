@@ -1,9 +1,10 @@
 import React from "react";
-import { Badge, Box, SimpleGrid, Text } from "@chakra-ui/core";
+import { Badge, Box, Flex, SimpleGrid, Text } from "@chakra-ui/core";
 import { Link } from "react-router-dom";
 
 import Error from "./error";
 import Breadcrumbs from "./breadcrumbs";
+import FavouriteButton from "./favourite-button"
 import LoadMoreButton from "./load-more-button";
 import { useSpaceXPaginated } from "../utils/use-space-x";
 
@@ -89,6 +90,13 @@ function LaunchPadItem({ launchPad }) {
           {launchPad.vehicles_launched.join(", ")}
         </Text>
       </Box>
+      <Flex>
+          <FavouriteButton
+            type={"launchPad"}
+            item={launchPad}
+            id={launchPad.site_id}
+          />
+      </Flex>
     </Box>
   );
 }

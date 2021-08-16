@@ -1,29 +1,44 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { IconButton } from "@chakra-ui/core";
 import { Star } from "react-feather";
-
+import { FavouritesContext } from "../context/favourite-context";
 
 export default function FavouriteButton({type, id}) {
 
-    const [favourite, setFavourite] = useState(false)
+    const { favouriteLaunches, favouriteLaunchPads, addLaunchToFaves, removeLaunchFromFaves, addLaunchPadToFaves, removeLaunchPadFromFaves } = useContext(FavouritesContext);
 
-    function handleClick(event) {
+    let currentFavourite = favouriteLaunches.includes(id) || favouriteLaunchPads.includes(id);
+ 
+    const isFavourite = currentFavourite ? true : false;
+     
+    function handleClick(event, type, id) {
         event.preventDefault()
-		favourite ? setFavourite(false) : setFavourite(true);
+        if (type === 'launch') {
+			if (currentFavourite) {
+				removeLaunchFromFaves(id)
+			} else {
+				addLaunchToFaves(id)
+			}
+		}
+        if (type === 'launchPad') {
+            if (currentFavourite) {
+                removeLaunchPadFromFaves(id)
+            } else {
+                addLaunchPadToFaves(id)
+            }
+        }
 	}
-
-    console.log(type, id)
 
     return (
         <>
           <IconButton
-            onClick={(event) => handleClick(event, type)}
+            onClick={(event) => handleClick(event, type, id)}
             as={Star}
             variant="solid"
             colorScheme="white"
             size="sm"
             stroke="#FFD700"
-            style={favourite ? { fill: "#FFD700" } : { fill: "none" }}
+            style={isFavourite ? { fill: "#FFD700" } : { fill: "none" }}
           />
         </>
     )
