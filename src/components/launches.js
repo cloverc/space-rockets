@@ -101,16 +101,24 @@ export function LaunchItem({ launch }) {
             {launch.rocket.rocket_name} &bull; {launch.launch_site.site_name}
           </Box>
         </Box>
-
-        <Box
-          mt="1"
-          fontWeight="semibold"
-          as="h4"
-          lineHeight="tight"
-          isTruncated
-        >
-          {launch.mission_name}
-        </Box>
+        <Flex>
+          <Box
+            mt="1"
+            fontWeight="semibold"
+            as="h4"
+            lineHeight="tight"
+            isTruncated
+          >
+            {launch.mission_name}
+          </Box>
+          <Box ml="auto">
+            <FavouriteButton
+              type={"launch"}
+              item={launch}
+              id={launch.flight_number}
+            />
+          </Box>
+        </Flex>
         <Flex>
           <Text fontSize="sm">{formatDate(launch.launch_date_utc)} </Text>
           <Text color="gray.500" ml="2" fontSize="sm">
@@ -118,13 +126,6 @@ export function LaunchItem({ launch }) {
           </Text>
         </Flex>
       </Box>
-      <Flex>
-          <FavouriteButton
-            type={"launch"}
-            item={launch}
-            id={launch.flight_number}
-          />
-      </Flex>
     </Box>
   );
 }

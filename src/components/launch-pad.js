@@ -91,12 +91,6 @@ function Header({ launchPad }) {
         borderRadius="lg"
       >
         {launchPad.site_name_long}
-        <Flex>
-          <FavouriteButton
-            type={"launchPad"}
-            id={launchPad.site_id}
-          />
-        </Flex>
       </Heading>
       <Stack isInline spacing="3">
         <Badge variantColor="purple" fontSize={["sm", "md"]}>
@@ -112,6 +106,12 @@ function Header({ launchPad }) {
             Retired
           </Badge>
         )}
+        <Box>
+          <FavouriteButton
+            type={"launchPad"}
+            id={launchPad.site_id}
+          />
+      </Box>
       </Stack>
     </Flex>
   );

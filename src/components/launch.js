@@ -96,13 +96,6 @@ function Header({ launch }) {
         borderRadius="lg"
       >
         {launch.mission_name}
-        <Flex>
-          <FavouriteButton
-            type={"launch"}
-            item={launch}
-            id={launch.flight_number}
-          />
-      </Flex>
       </Heading>
       <Stack isInline spacing="3">
         <Badge variantColor="purple" fontSize={["xs", "md"]}>
@@ -117,6 +110,13 @@ function Header({ launch }) {
             Failed
           </Badge>
         )}
+        <Box>        
+            <FavouriteButton
+              type={"launch"}
+              item={launch}
+              id={launch.flight_number}
+            />
+      </Box>
       </Stack>
     </Flex>
   );

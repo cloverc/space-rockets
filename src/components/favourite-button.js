@@ -36,7 +36,7 @@ export default function FavouriteButton({type, id}) {
             as={Star}
             variant="solid"
             colorScheme="white"
-            size="sm"
+            size="s"
             stroke="#FFD700"
             style={isFavourite ? { fill: "#FFD700" } : { fill: "none" }}
           />
