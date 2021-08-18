@@ -109,6 +109,7 @@ function Header({ launchPad }) {
         <Box>
           <FavouriteButton
             type={"launchPad"}
+            item={launchPad}
             id={launchPad.site_id}
           />
       </Box>

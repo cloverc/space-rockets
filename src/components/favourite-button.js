@@ -7,8 +7,7 @@ export default function FavouriteButton({type, item, id}) {
 
     const { favouriteLaunches, favouriteLaunchPads, addLaunchToFaves, removeLaunchFromFaves, addLaunchPadToFaves, removeLaunchPadFromFaves } = useContext(FavouritesContext);
 
-    let currentFavourite = favouriteLaunchPads.find((launchPad) => launchPad.site_id === id) 
-    || favouriteLaunches.find((launch) => launch.flight_number === id);
+    let currentFavourite = favouriteLaunches.find((launch) => launch.flight_number === id) || favouriteLaunchPads.find((launchPad) => launchPad.site_id === id);
  
     const isFavourite = currentFavourite ? true : false;
      
