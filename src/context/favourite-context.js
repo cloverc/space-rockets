@@ -25,7 +25,7 @@ const favouritesReducer = (state = { favouriteLaunches: [], favouriteLaunchPads:
   }
   if (action.type === REMOVE_FAVE_LAUNCH) {
     const filteredLaunches = state.favouriteLaunches.filter(item => {
-      return item !== action.payload;
+      return item.flight_number !== action.payload;
     });
     return {
       favouriteLaunches: [...filteredLaunches], favouriteLaunchPads: [...state.favouriteLaunchPads]};
@@ -39,7 +39,7 @@ const favouritesReducer = (state = { favouriteLaunches: [], favouriteLaunchPads:
   }
   if (action.type === REMOVE_FAVE_LAUNCH_PAD) {
     const filteredLaunchPads = state.favouriteLaunchPads.filter(item => {
-      return item !== action.payload;
+      return item.site_id !== action.payload;
     });
     return {
       favouriteLaunches: [...state.favouriteLaunches], favouriteLaunchPads: [...filteredLaunchPads] };
@@ -72,7 +72,7 @@ export const FavouritesProvider = ({children}) => {
   const removeLaunchFromFaves = item => {
     dispatch ({
         type: REMOVE_FAVE_LAUNCH,
-        payload: item,
+        payload: item.flight_number,
     });
   };
 
@@ -86,7 +86,7 @@ export const FavouritesProvider = ({children}) => {
   const removeLaunchPadFromFaves = item => {
     dispatch ({
         type: REMOVE_FAVE_LAUNCH_PAD,
-        payload: item,
+        payload: item.site_id,
     });
   };
 

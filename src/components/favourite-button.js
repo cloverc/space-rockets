@@ -3,28 +3,29 @@ import { IconButton } from "@chakra-ui/core";
 import { Star } from "react-feather";
 import { FavouritesContext } from "../context/favourite-context";
 
-export default function FavouriteButton({type, id}) {
+export default function FavouriteButton({type, item, id}) {
 
     const { favouriteLaunches, favouriteLaunchPads, addLaunchToFaves, removeLaunchFromFaves, addLaunchPadToFaves, removeLaunchPadFromFaves } = useContext(FavouritesContext);
 
-    let currentFavourite = favouriteLaunches.includes(id) || favouriteLaunchPads.includes(id);
+    let currentFavourite = favouriteLaunchPads.find((launchPad) => launchPad.site_id === id) 
+    || favouriteLaunches.find((launch) => launch.flight_number === id);
  
     const isFavourite = currentFavourite ? true : false;
      
-    function handleClick(event, type, id) {
+    function handleClick(event, type, item) {
         event.preventDefault()
         if (type === 'launch') {
 			if (currentFavourite) {
-				removeLaunchFromFaves(id)
+				removeLaunchFromFaves(item)
 			} else {
-				addLaunchToFaves(id)
+				addLaunchToFaves(item)
 			}
 		}
         if (type === 'launchPad') {
             if (currentFavourite) {
-                removeLaunchPadFromFaves(id)
+                removeLaunchPadFromFaves(item)
             } else {
-                addLaunchPadToFaves(id)
+                addLaunchPadToFaves(item)
             }
         }
 	}
@@ -32,7 +33,7 @@ export default function FavouriteButton({type, id}) {
     return (
         <>
           <IconButton
-            onClick={(event) => handleClick(event, type, id)}
+            onClick={(event) => handleClick(event, type, item)}
             as={Star}
             variant="solid"
             colorScheme="white"
