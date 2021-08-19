@@ -26,6 +26,7 @@ import { useSpaceX } from "../utils/use-space-x";
 import { formatDateTime, formatDateTimeLocal } from "../utils/format-date";
 import Error from "./error";
 import Breadcrumbs from "./breadcrumbs";
+import FavouriteButton from "./favourite-button"
 
 export default function Launch() {
   let { launchId } = useParams();
@@ -109,6 +110,13 @@ function Header({ launch }) {
             Failed
           </Badge>
         )}
+        <Box>        
+            <FavouriteButton
+              type={"launch"}
+              item={launch}
+              id={launch.flight_number}
+            />
+      </Box>
       </Stack>
     </Flex>
   );

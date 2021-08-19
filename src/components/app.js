@@ -8,9 +8,13 @@ import Home from "./home";
 import LaunchPads from "./launch-pads";
 import LaunchPad from "./launch-pad";
 
+import { FavouritesProvider } from "../context/favourite-context";
+import FavouritesDrawer from './favourites-drawer'
+
 export default function App() {
   return (
     <div>
+    <FavouritesProvider>
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -19,6 +23,7 @@ export default function App() {
         <Route path="/launch-pads" element={<LaunchPads />} />
         <Route path="/launch-pads/:launchPadId" element={<LaunchPad />} />
       </Routes>
+      </FavouritesProvider>
     </div>
   );
 }
@@ -42,6 +47,7 @@ function NavBar() {
       >
         ¡SPACE·R0CKETS!
       </Text>
+      <FavouritesDrawer />
     </Flex>
   );
 }

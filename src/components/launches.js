@@ -7,6 +7,7 @@ import { useSpaceXPaginated } from "../utils/use-space-x";
 import { formatDate } from "../utils/format-date";
 import Error from "./error";
 import Breadcrumbs from "./breadcrumbs";
+import FavouriteButton from "./favourite-button"
 import LoadMoreButton from "./load-more-button";
 
 const PAGE_SIZE = 12;
@@ -20,7 +21,7 @@ export default function Launches() {
       sort: "launch_date_utc",
     }
   );
-  console.log(data, error);
+  // console.log(data, error);
   return (
     <div>
       <Breadcrumbs
@@ -100,16 +101,24 @@ export function LaunchItem({ launch }) {
             {launch.rocket.rocket_name} &bull; {launch.launch_site.site_name}
           </Box>
         </Box>
-
-        <Box
-          mt="1"
-          fontWeight="semibold"
-          as="h4"
-          lineHeight="tight"
-          isTruncated
-        >
-          {launch.mission_name}
-        </Box>
+        <Flex>
+          <Box
+            mt="1"
+            fontWeight="semibold"
+            as="h4"
+            lineHeight="tight"
+            isTruncated
+          >
+            {launch.mission_name}
+          </Box>
+          <Box ml="auto">
+            <FavouriteButton
+              type={"launch"}
+              item={launch}
+              id={launch.flight_number}
+            />
+          </Box>
+        </Flex>
         <Flex>
           <Text fontSize="sm">{formatDate(launch.launch_date_utc)} </Text>
           <Text color="gray.500" ml="2" fontSize="sm">
