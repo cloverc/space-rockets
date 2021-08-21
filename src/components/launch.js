@@ -19,14 +19,14 @@ import {
   Stack,
   AspectRatioBox,
   StatGroup,
-  Tooltip
+  Tooltip,
 } from "@chakra-ui/core";
 
 import { useSpaceX } from "../utils/use-space-x";
 import { formatDateTime, formatDateTimeLocal } from "../utils/format-date";
 import Error from "./error";
 import Breadcrumbs from "./breadcrumbs";
-import FavouriteButton from "./favourite-button"
+import FavouriteButton from "./favourite-button";
 
 export default function Launch() {
   let { launchId } = useParams();
@@ -110,13 +110,13 @@ function Header({ launch }) {
             Failed
           </Badge>
         )}
-        <Box>        
-            <FavouriteButton
-              type={"launch"}
-              item={launch}
-              id={launch.flight_number}
-            />
-      </Box>
+        <Box>
+          <FavouriteButton
+            type={"launch"}
+            item={launch}
+            id={launch.flight_number}
+          />
+        </Box>
       </Stack>
     </Flex>
   );
@@ -133,8 +133,12 @@ function TimeAndLocation({ launch }) {
           </Box>
         </StatLabel>
         <StatNumber fontSize={["md", "xl"]}>
-          <Tooltip hasArrow label={'Local Time: ' + formatDateTime(launch.launch_date_local)} placement="top">
-                {formatDateTimeLocal(launch.launch_date_local)}
+          <Tooltip
+            hasArrow
+            label={"Local Time: " + formatDateTime(launch.launch_date_local)}
+            placement="top"
+          >
+            {formatDateTimeLocal(launch.launch_date_local)}
           </Tooltip>
         </StatNumber>
         <StatHelpText>{timeAgo(launch.launch_date_utc)}</StatHelpText>
