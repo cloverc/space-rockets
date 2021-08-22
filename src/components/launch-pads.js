@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import Error from "./error";
 import Breadcrumbs from "./breadcrumbs";
-import FavouriteButton from "./favourite-button"
+import FavouriteButton from "./favourite-button";
 import LoadMoreButton from "./load-more-button";
 import { useSpaceXPaginated } from "../utils/use-space-x";
 

@@ -7,7 +7,7 @@ import { useSpaceXPaginated } from "../utils/use-space-x";
 import { formatDate } from "../utils/format-date";
 import Error from "./error";
 import Breadcrumbs from "./breadcrumbs";
-import FavouriteButton from "./favourite-button"
+import FavouriteButton from "./favourite-button";
 import LoadMoreButton from "./load-more-button";
 
 const PAGE_SIZE = 12;
