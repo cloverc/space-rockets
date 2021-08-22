@@ -1,4 +1,4 @@
-import { DateTime } from "luxon"
+import { DateTime } from "luxon";
 
 const FORMAT_DATE_TIME = {
   year: "numeric",
@@ -7,7 +7,7 @@ const FORMAT_DATE_TIME = {
   hour: "numeric",
   minute: "numeric",
   second: "numeric",
-}
+};
 
 export function formatDate(timestamp) {
   return new Intl.DateTimeFormat("en-US", {
@@ -31,8 +31,8 @@ export function formatDateTime(timestamp) {
 }
 
 export function formatDateTimeLocal(timestamp) {
-  const getDateTime = DateTime.fromISO(timestamp, { setZone: true })
-  const offsetTimeZone = getDateTime.zoneName
-  const localDateTime = getDateTime.toLocaleString(FORMAT_DATE_TIME)
-  return `${localDateTime}  ${offsetTimeZone}`
+  const getDateTime = DateTime.fromISO(timestamp, { setZone: true });
+  const offsetTimeZone = getDateTime.zoneName;
+  const localDateTime = getDateTime.toLocaleString(FORMAT_DATE_TIME);
+  return `${localDateTime}  ${offsetTimeZone}`;
 }
